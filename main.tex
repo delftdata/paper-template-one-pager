@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=2.5cm,footnotesep=0.5cm]{geometry}
+
+\usepackage{hyperref}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage[square]{natbib}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[graphicx]{realboxes}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem} % reset theorem numbering for each chapter
+
+\newtheorem{task}[thm]{Task} % same for example numbers
+
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+\usepackage{pgfgantt}
+\usepackage{rotating}
+
+\newganttchartelement*{mymilestone}{
+mymilestone/.style={
+shape=isosceles triangle,
+inner sep=0pt,
+draw=cyan,
+top color=white,
+bottom color=cyan!50
+},
+mymilestone incomplete/.style={
+/pgfgantt/mymilestone,
+draw=yellow,
+bottom color=yellow!50
+},
+mymilestone label font=\slshape,
+mymilestone left shift=0pt,
+mymilestone right shift=0pt
+}
+
+\newgantttimeslotformat{stardate}{%
+\def\decomposestardate##1.##2\relax{%
+\def\stardateyear{##1}\def\stardateday{##2}%
+}%
+\decomposestardate#1\relax%
+\pgfcalendardatetojulian{\stardateyear-01-01}{#2}%
+\advance#2 by-1\relax%
+\advance#2 by\stardateday\relax%
+}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\Large
+ \begin{center}
+Fabulous Title\\
+
+\hspace{10pt}
+
+% Author names and affiliations
+\large
+Frist Author \\
+  
+\small TU Delft
+
+\end{center}
+
+\hspace{10pt}
+
+\normalsize
+
+
+\section{Section 1}
+
+
+
+{
+\small
+\bibliographystyle{abbrv}
+\bibliography{refs}
+}
+
+\end{document}
